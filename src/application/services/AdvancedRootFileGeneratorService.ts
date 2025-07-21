@@ -94,10 +94,11 @@ export class AdvancedRootFileGeneratorService {
       const afterCursor = parts.slice(cursorIndex + 1);
       const combined = [...projectParts, ...afterCursor];
 
+      // For markdown links, always use forward slashes
       return combined.join("/").replace(".mdc", ".md");
     }
 
-    return relativePath.replace(".mdc", ".md");
+    return relativePath.replace(path.sep, "/").replace(".mdc", ".md");
   }
 
   private buildRootContentForDirectory(
@@ -167,6 +168,7 @@ export class AdvancedRootFileGeneratorService {
     
     if (cursorIndex !== -1) {
       const afterCursor = parts.slice(cursorIndex + 1);
+      // For markdown links, always use forward slashes
       return afterCursor.join("/").replace(".mdc", ".md");
     }
     

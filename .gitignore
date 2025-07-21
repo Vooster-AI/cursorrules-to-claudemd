@@ -9,3 +9,5 @@ coverage/
 .idea/
 
 .claude
+
+coverage-e2e

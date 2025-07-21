@@ -78,6 +78,7 @@ export class RootFileGeneratorService {
       const fileName = afterCursor.pop()?.replace(".mdc", "") || "";
 
       if (afterCursor.length > 0) {
+        // For display paths in markdown, use forward slashes
         return `${afterCursor.join("/")}/${fileName}`;
       }
 
@@ -96,9 +97,10 @@ export class RootFileGeneratorService {
       const afterCursor = parts.slice(cursorIndex + 1);
       const combined = [...projectParts, ...afterCursor];
 
+      // For markdown links, always use forward slashes
       return combined.join("/").replace(".mdc", ".md");
     }
 
-    return relativePath.replace(".mdc", ".md");
+    return relativePath.split(path.sep).join("/").replace(".mdc", ".md");
   }
 }

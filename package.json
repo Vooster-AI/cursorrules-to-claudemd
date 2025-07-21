@@ -17,7 +17,10 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "prepublish:npm": "pnpm build && pnpm test",
+    "test:e2e": "pnpm build && jest --config jest.e2e.config.js",
+    "test:e2e:watch": "pnpm build && jest --config jest.e2e.config.js --watch",
+    "test:all": "pnpm test && pnpm test:e2e",
+    "prepublish:npm": "pnpm build && pnpm test:all",
     "publish:npm": "pnpm npm publish --access public"
   },
   "keywords": [

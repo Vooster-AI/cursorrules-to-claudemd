@@ -19,7 +19,8 @@ export class MetadataParserService {
   }
 
   private extractMetadata(fileContent: string): { metadata: CursorRuleMetadata; content: string } {
-    const metadataRegex = /^---\n([\s\S]*?)\n---\n/;
+    // Handle both Unix (\n) and Windows (\r\n) line endings
+    const metadataRegex = /^---\r?\n([\s\S]*?)\r?\n---\r?\n/;
     const match = fileContent.match(metadataRegex);
 
     if (!match) {

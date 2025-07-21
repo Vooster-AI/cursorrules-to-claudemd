@@ -151,6 +151,12 @@ pnpm test:watch
 # Run tests with coverage
 pnpm test:coverage
 
+# Run end-to-end tests
+pnpm test:e2e
+
+# Run all tests (unit + e2e)
+pnpm test:all
+
 # Publish to npm
 pnpm publish:npm
 ```
@@ -168,6 +174,23 @@ This tool uses a layered architecture:
   - `ClaudeMdService`: Updates CLAUDE.md files
 - **Domain Layer**: Type definitions for `FileInfo` and `CursorRuleMetadata`
 - **Infrastructure Layer**: File system operations
+
+## Testing
+
+The project includes comprehensive testing:
+
+- **Unit Tests**: 58 tests covering all services and utilities
+- **E2E Tests**: 21 tests covering complete workflows and cross-platform compatibility
+- **Total**: 79 tests with full coverage
+
+See [docs/TESTING.md](./docs/TESTING.md) for detailed testing guide.
+
+## Cross-Platform Support
+
+The tool is designed to work on all major operating systems:
+- ✅ Windows (handles backslashes and CRLF line endings)
+- ✅ macOS (tested on Darwin)
+- ✅ Linux (standard Unix compatibility)
 
 ## License
 
